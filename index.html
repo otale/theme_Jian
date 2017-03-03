@@ -1,0 +1,43 @@
+ #include('./header.html')
+<div class="mask"></div>
+<style media="screen">
+.page-header {
+  background:url("${theme_url('/static/images/cover.jpg')}");
+  background-repeat: no-repeat;
+  background-size: 100% auto;
+  background-position: center;
+}
+
+@media screen and (max-width:960px) {
+  .page-header {
+    background-size: 100% 100%;
+  }
+}
+</style>
+<header class="page-header">
+  <div class="page-header-title">
+    <h1 class="animated fadeIn"><a href="${site_url()}">${site_title()}</a></h1>
+    <p class="animated2 fadeIn">${site_description()}</p>
+  </div>
+</header>
+<div class="container">
+  <div class="container-main">
+    #for(article : articles.list)
+    <article class="post-block">
+      <header class="animated2 fadeInDown">
+        <h2><a href="${permalink()}">${title()}</a></h2>
+        <time datetime="${created('EEE, d MMM yyyy')}">${created('EEE, d MMM yyyy')}</time>
+      </header>
+      <section class="animated fadeInDown">
+        ${intro(200)}
+      </section>
+      <footer></footer>
+    </article>
+    #end
+    <nav class="page-pagination">
+      #call pageLink('上一页','prev')
+      #call pageLink('下一页','next')
+    </nav>
+  </div>
+</div>
+#include('./footer.html')

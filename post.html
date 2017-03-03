@@ -1,0 +1,37 @@
+#include('./header.html')
+<div class="mask"></div>
+<div class="container">
+    <div class="container-main">
+        <article class="post-page-main">
+            <header class="animated2 fadeInDown">
+                <h2>${title()}</h2>
+                <time datetime="${created("yyyy-MM-dd'T'HH:mm:ss.SSSXXX")}">${created('yyyy-MM-dd')}</time>
+            </header>
+            <section class="post-page-content animated fadeInDown">
+               ${show_content()}
+            </section>
+            <footer class="animated fadeInDown">
+                <div class="post-page-tags">
+                    标签：${show_tags()}
+                </div>
+                <div class="post-page-readmore">
+                #if(null != article_prev())
+                    <div class="post-page-readmore-prev">
+                        <span>上一篇:&nbsp;&nbsp;</span>
+                        <a href="${permalink(article_prev())}">${title(article_prev())}</a>
+                    </div>
+                    #end
+                    #if(null != article_next())
+                    <div class="post-page-readmore-next">
+                        <span>下一篇:&nbsp;&nbsp;</span>
+                        <a href="${permalink(article_next())}">${title(article_next())}</a>
+                    </div>
+                    #end
+                </div>
+                #include('./comments.html')
+            </footer>
+        </article>
+    </div>
+</div>
+
+#include('./footer.html')

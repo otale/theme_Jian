@@ -1,0 +1,25 @@
+#include('./header.html')
+<div class="mask"></div>
+<div class="container">
+  <div class="container-main">
+    <article class="post-page-main">
+      <header class="animated2 fadeInDown">
+        <h2>文章归档</h2>
+      </header>
+      <section class="post-page-content animated fadeInDown">
+        #for(archive : archives)
+        <h3>${fmtdate(archive.date, 'yyyy - MM')}</h3>
+        <ul>
+          #for(article : archive.articles)
+          <li>
+            <a href="${permalink()}">${title()}</a>&nbsp;&nbsp;&nbsp;&nbsp;( ${fmtdate(article.created, 'EEE, d MMM yyyy')} )</li>
+          #end
+        </ul>
+        #end
+      </section>
+      <footer>
+      </footer>
+    </article>
+  </div>
+</div>
+#include('./footer.html')

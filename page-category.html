@@ -1,0 +1,29 @@
+#include('./header.html', {title: keyword + '下的文章' })
+<div class="mask"></div>
+<div class="container">
+  <div class="container-main">
+    <h1 class="title" style="padding-top:30px;"><span style="color: #2479CC;">${keyword}</span> 下的文章</h1> #if(is_empty(articles))
+    <div>
+      <p>抱歉，还没有相关文章.</p>
+    </div>
+    #else
+    #for(article : articles.list)
+    <article class="post-block">
+      <header class="animated2 fadeInDown">
+        <h2><a href="${permalink()}">${title()}</a></h2>
+        <time datetime="${created('EEE, d MMM yyyy')}">${created('EEE, d MMM yyyy')}</time>
+      </header>
+      <section class="animated fadeInDown">
+        ${intro(200)}
+      </section>
+      <footer></footer>
+    </article>
+    #end
+    <nav class="page-navi">
+      #call pageLink('上一页','prev')
+      #call pageLink('下一页','next')
+    </nav>
+    #end
+  </div>
+</div>
+#include('./footer.html')

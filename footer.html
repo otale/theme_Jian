@@ -1,0 +1,56 @@
+<footer class="page-footer">
+  <p>Copyright © ${fmtdate(date, 'yyyy')} <a class="down-a" href="${site_url()}">${site_title()}</a></p>
+  <p>Powered by <a href="https://github.com/otale/tale" target="_blank">Tale</a>,Themes <a class="down-a" target="_blank" href="https://weic96.cn/themes-jian">Jian</a>.</p>
+</footer>
+</div>
+<span class="page-menu-btn waves-effect waves-button waves-float animated2 fadeIn">
+            <i class="page-menu-btn-one"></i>
+            <i class="page-menu-btn-two"></i>
+            <i class="page-menu-btn-three"></i>
+    </span>
+<span class="page-retop-btn waves-effect waves-button waves-float animated2 fadeIn"><i class="fa fa-angle-up"></i></span>
+<span class="page-body-color-light animated2 fadeIn"><i class="fa fa-sun-o"></i></span>
+<span class="page-body-color-night animated2 fadeIn"><i class="fa fa-moon-o"></i></span>
+</div>
+<script src="${theme_url('/static/js/jquery-2.2.4.min.js')}"></script>
+<script src="${theme_url('/static/js/jquery.pjax.js')}"></script>
+<script src="${theme_url('/static/js/highlight.pack.js')}"></script>
+<script src="${theme_url('/static/js/waves.min.js')}"></script>
+<script src="${theme_url('/static/js/transition.js')}"></script>
+<script src="${theme_url('/static/js/main.js')}"></script>
+<script src="${theme_url('/static/js/zoom.js')}"></script>
+<script type="text/javascript">
+window.onload = function() {
+  $('#pjax-load-container').hide();
+};
+</script>
+<script type="text/javascript">
+$(function() {
+  hljs.initHighlightingOnLoad();
+  Waves.displayEffect();
+  OtherF();
+})
+</script>
+<script type="text/javascript">
+$(document).pjax('a', '#pjax-container', {
+  fragment: '#pjax-container',
+  timeout: 8000
+});
+$(document).on('pjax:send', function() {
+  $('#pjax-load-container').show();
+});
+$(document).on('pjax:complete', function() {
+  $('#pjax-load-container').hide();
+  $('pre code').each(function(i, block) {
+    hljs.highlightBlock(block);
+  });
+  OtherF();
+  if ($('.ds-thread').length > 0) {
+    if (typeof DUOSHUO !== 'undefined') DUOSHUO.EmbedThread('.ds-thread');
+    else $.getScript("http://ojebey8va.bkt.clouddn.com/embed.js?v=20170109");
+  }
+});
+</script>
+</body>
+
+</html>
